@@ -1,6 +1,6 @@
-import { FlexCol, FlexRow, Text } from "../../../App.Styles";
-import Button from "../../../Components/Button/Button";
-import TopRateSection from "./TopRatedSection";
+import { FlexCol, FlexRow, Text } from "../../App.Styles";
+import Button from "../../Components/Button/Button";
+import TopRateSection from "../Gust/HomeScreen/TopRatedSection";
 
 function Payment() {
   return (

@@ -103,3 +103,4 @@ function ShoppingCart({ img, text, price, discount }) {
     </CartContainer>
   );
 }
+export default ShoppingCart;

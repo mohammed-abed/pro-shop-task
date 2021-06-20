@@ -12,6 +12,7 @@ import { useState } from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Link } from "react-router-dom";
 
 const StyleObj = {
   fontSize: 20,
@@ -27,7 +28,14 @@ const NavBar = () => {
     <NavContainer>
       <NavInnerSection>
         <NavBox>
+          {/*<Link to={"/"}>
+            <Logo src={logo} alt="Logo" />
+          </Link>*/}
           <Logo src={logo} alt="Logo" />
+
+          {/* <StyledLink to={"/"}>
+            <Logo src={logo} alt="Logo" />
+          </StyledLink>*/}
         </NavBox>
         <NavBox style={{ background: "#FFF", borderRadius: 6 }}>
           <SearchInput

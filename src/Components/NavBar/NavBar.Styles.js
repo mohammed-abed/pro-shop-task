@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FlexBox, FlexRow, InnerSection } from "../../App.Styles";
 import SearchIcon from "@material-ui/icons/Search";
+import { Link } from "react-router-dom";
 
 export const NavContainer = styled("nav")`
   display: flex;

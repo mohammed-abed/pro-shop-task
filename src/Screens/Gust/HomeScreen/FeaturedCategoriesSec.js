@@ -6,7 +6,12 @@ import {
   InnerSection,
   Text,
 } from "../../../App.Styles";
-import { HeroTitle, SectionBox, YellowLine } from "./HomeScreen.Styles";
+import {
+  GrayLine,
+  HeroTitle,
+  SectionBox,
+  YellowLine,
+} from "./HomeScreen.Styles";
 import Product from "../../../Assets/Product.png";
 
 function FeaturedCategoriesSec() {
@@ -23,7 +28,7 @@ function FeaturedCategoriesSec() {
       <FlexRow justify={"start"}>
         <YellowLine></YellowLine>
       </FlexRow>
-      <Hr />
+      <GrayLine />
       <FlexBox>
         <FlexCol width={"380px"} height={"392px"}>
           <FlexBox

@@ -11,11 +11,11 @@ import StarHalfIcon from "@material-ui/icons/StarHalf";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import Product from "../../../Assets/Product.png";
 
-function TopRateSection({ title }) {
+function TopRatedSection(/*{ title }*/) {
   return (
     <FlexBox>
       <InnerSection align="flex-start">
-        <HeroTitle>{title}</HeroTitle>
+        <HeroTitle>TopRated</HeroTitle>
         <FlexRow justify={"start"}>
           <YellowLine></YellowLine>
         </FlexRow>
@@ -60,4 +60,4 @@ function TopRateSection({ title }) {
     </FlexBox>
   );
 }
-export default TopRateSection;
+export default TopRatedSection;

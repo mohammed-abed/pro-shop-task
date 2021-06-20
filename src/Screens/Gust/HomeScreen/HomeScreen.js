@@ -17,8 +17,15 @@ import {
 } from "./HomeScreen.Styles";
 import Button from "../../../Components/Button/Button";
 import slideImage from "../../../Assets/Screenshot 2021-06-14 110717.png";
-import HeroSection from "./FeaturedProductsSection";
 import FeaturedCategoriesSec from "./FeaturedCategoriesSec";
+import FeaturedProductsSection from "./FeaturedProductsSection";
+import TopRatedSection from "./TopRatedSection";
+import HeroSection from "./HeroSection";
+import NavBar from "../../../Components/NavBar/NavBar";
+import FeaturedProductPage from "./FeaturedProductPage";
+import RecentlyViewedSection from "./RecentlyViewedSection";
+import Payment from "../../User/Payment";
+import ShoppingCart from "../../../Components/ShoppingCart/ShoppingCart";
 
 const styles = {
   root: {
@@ -37,6 +44,17 @@ const HomeScreen = () => {
     <flexColumn>
       <HeroSection />
       <FeaturedCategoriesSec />
+      <FeaturedProductsSection />
+      <TopRatedSection />
+      <RecentlyViewedSection />
+      <FeaturedProductPage />
+      <Payment />
+      <Profile />
+      <ShoppingCart />
+      <login />
+      <Signup />
+      <PlaceOreder />
+      <ReviewOrder />
     </flexColumn>
   );
 };

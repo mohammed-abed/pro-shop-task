@@ -71,3 +71,69 @@ export const Image = styled("img")`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
 `;
+export const Section = styled("Section")`
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const HorBox = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: ${(props) => props.width}%;
+`;
+export const VerBox = styled("div")`
+  width: ${(props) => props.width}%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: ${(props) => props.height};
+  margin-right: ${(props) => props.marginRight}px;
+  align-items: ${(props) => (props.alignItems ? "center" : "flex-start")};
+  span {
+    color: #000;
+    background: #fcdd06;
+    font-size: 8px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 8px;
+    top: -3px;
+    z-index: 1;
+  }
+`;
+export const Table = styled("table")`
+  h3 {
+    padding-bottom: 30px;
+  }
+  padding: 15px 30px 15px 30px;
+  td {
+    padding: 15px 30px 15px 0px;
+  }
+  td:first-child {
+    color: #707070;
+  }
+`;
+export const Card = styled("div")`
+  background: #f2f2f2;
+  margin-right: 20px;
+  margin-top: 80px;
+  border-radius: 8px;
+  height: ${(props) => (props.height ? "auto" : "380px")};
+  width: ${(props) => props.width}px;
+  min-width: ${(props) => props.minwidth}px;
+  hr {
+    width: 100%;
+    border: 1px solid #ddd;
+    background: #ddd;
+  }
+  h3 {
+    margin: 20px 15px 0 0;
+  }
+`;

@@ -1,7 +1,6 @@
-import Button from "../../Components/Button/Button";
-import { CardContainer } from "./ProductCard.Styles";
 import { FlexBox, FlexRow, Image, Text } from "../../App.Styles";
-
+import Button from "../../Components/Button/Button";
+import { CardContainer } from "./ProductCard.Styles.js";
 function ProductCard({
   img,
   text,

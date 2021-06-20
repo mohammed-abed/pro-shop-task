@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InnerSection, FlexRow, FlexCol, FlexBox } from "../../App.styles";
+import { InnerSection } from "../../App.Styles.js";
 
 export const CartContainer = styled(InnerSection)`
   display: flex;
