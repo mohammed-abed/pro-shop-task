@@ -79,4 +79,5 @@ function ShoppingCartPage({ discount }) {
     </FlexCol>
   );
 }
+
 export default ShoppingCartPage;

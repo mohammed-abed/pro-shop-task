@@ -1,10 +1,11 @@
 import {
+  Icon,
+  Logo,
+  NavBox,
   NavContainer,
   NavInnerSection,
-  NavBox,
-  Logo,
-  SearchInput,
   SearchButton,
+  SearchInput,
   StyledSearchIcon,
 } from "./NavBar.Styles";
 import logo from "../../Assets/Screenshot 2021-06-14 110717.png";
@@ -12,18 +13,28 @@ import { useState } from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { Link } from "react-router-dom";
-
-const StyleObj = {
-  fontSize: 20,
-  color: "#FFF",
-  fill: "#FFF",
-  margin: "auto 0 auto 32px",
-};
+import { useDispatch, useSelector } from "react-redux";
+import { logoutAction } from "../../Redux/User/UserActions";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Text } from "../../App.Styles";
 
 const NavBar = () => {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const Style = {
+    fontSize: 25,
+    color: "#FFF",
+    fill: "#FFF",
+    margin: "auto 0 10px 0",
+  };
+  /* const StyleObj = {
+    fontSize: 20,
+    color: "#FFF",
+    fill: "#FFF",
+    margin: "auto 0 auto 32px",
+  };*/
 
+  const state = useSelector((state) => state);
+  const [value, setValue] = useState("");
   return (
     <NavContainer>
       <NavInnerSection>
@@ -52,9 +63,49 @@ const NavBar = () => {
           </SearchButton>
         </NavBox>
         <NavBox>
-          <PersonIcon style={StyleObj} />
-          <BookmarkIcon style={StyleObj} />
-          <ShoppingCartIcon style={StyleObj} />
+          {/*<PersonIcon to={state.userDetails.user._id ? "/" : "/login" style={StyleObj} />*/}
+          <Icon to={state.userDetails.user._id ? "/" : "/login"}>
+            <PersonIcon style={Style} />
+            {state.userDetails.user._id ? (
+              <Text fontSize={"13px"} color={"#fff"}>
+                Profile
+              </Text>
+            ) : (
+              <Text fontSize={"13px"} color={"#fff"}>
+                Login / Sign up
+              </Text>
+            )}
+          </Icon>
+          {/*<BookmarkIcon style={StyleObj} />*/}
+          <Icon to={"/product"}>
+            <span>0</span>
+            <BookmarkIcon style={Style} />
+            <Text fontSize={"13px"} color={"#fff"}>
+              Wishlist
+            </Text>
+          </Icon>
+
+          {/*<ShoppingCartIcon style={StyleObj} />*/}
+          <Icon>
+            <span>0</span>
+            <ShoppingCartIcon style={Style} />
+            <Text fontSize={"13px"} color={"#fff"}>
+              Cart
+            </Text>
+          </Icon>
+          {state.userDetails.user._id && (
+            <Icon
+              onClick={() => {
+                dispatch(logoutAction(null));
+                localStorage.removeItem("user");
+              }}
+            >
+              <ExitToAppIcon style={Style} />
+              <Text fontSize={"13px"} color={"#fff"}>
+                Logout
+              </Text>
+            </Icon>
+          )}
         </NavBox>
       </NavInnerSection>
     </NavContainer>

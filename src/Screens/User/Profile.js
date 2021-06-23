@@ -1,5 +1,14 @@
-import { Card, HorBox, Section, Table, Text, VerBox } from "../../App.Styles";
+import {
+  Card,
+  HorBox,
+  Image,
+  Section,
+  Table,
+  Text,
+  VerBox,
+} from "../../App.Styles";
 import Button from "../../Components/Button/Button";
+import Product from "../../Assets/Product.png";
 
 function Profile() {
   return (
@@ -7,7 +16,7 @@ function Profile() {
       <Card>
         <VerBox width={100}>
           <HorBox>
-            <Image src={photo} width={true} height={true} border={true} />
+            <Image src={Product} width={true} height={true} border={true} />
             <h3>Mohammed</h3>
           </HorBox>
           <Text>My Orders</Text>
@@ -47,12 +56,12 @@ function Profile() {
               </tr>
             </Table>
           </VerBox>
-          <DivCol alignItems={true} height={"380px"} marginRight={30}>
-            <Image src={} />
+          <VerBox alignItems={true} height={"380px"} marginRight={30}>
+            <Image src={Product} />
             <Button width={70} height={35} marginTop={true} fontSize={0.5}>
               Upload new photo
             </Button>
-          </DivCol>
+          </VerBox>
         </HorBox>
       </Card>
     </Section>

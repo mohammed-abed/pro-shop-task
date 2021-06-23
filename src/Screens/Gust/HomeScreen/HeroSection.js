@@ -12,8 +12,8 @@ import {
   Dot,
   HeroBox,
   HeroTitle,
-  SideBox,
   Image,
+  SideBox,
 } from "./HomeScreen.Styles";
 import Button from "../../../Components/Button/Button";
 import Product from "../../../Assets/Product.png";

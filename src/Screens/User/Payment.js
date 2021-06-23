@@ -66,4 +66,5 @@ function Payment() {
     </FlexCol>
   );
 }
+
 export default Payment;

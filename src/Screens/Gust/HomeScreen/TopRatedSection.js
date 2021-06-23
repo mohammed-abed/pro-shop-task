@@ -60,4 +60,5 @@ function TopRatedSection(/*{ title }*/) {
     </FlexBox>
   );
 }
+
 export default TopRatedSection;

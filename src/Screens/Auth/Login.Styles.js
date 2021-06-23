@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow, InnerSection } from "../../App.Styles";
+import { FlexCol, FlexRow, InnerSection, Image } from "../../App.Styles";
+import { Field } from "formik";
 
 export const LoginRow = styled(FlexRow)`
   margin: 44px 0 78px 0;
@@ -38,9 +39,11 @@ export const Input = styled("input")`
   padding: 15px 11px;
   margin-bottom: 30px;
   font-size: 15px;
+
   :focus {
     outline: none;
   }
+
   ::placeholder {
     font-size: ${(props) => props.size};
     color: #000;

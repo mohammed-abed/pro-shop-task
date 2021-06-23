@@ -91,6 +91,7 @@ export const VerBox = styled("div")`
   height: ${(props) => props.height};
   margin-right: ${(props) => props.marginRight}px;
   align-items: ${(props) => (props.alignItems ? "center" : "flex-start")};
+
   span {
     color: #000;
     background: #fcdd06;
@@ -112,10 +113,13 @@ export const Table = styled("table")`
   h3 {
     padding-bottom: 30px;
   }
+
   padding: 15px 30px 15px 30px;
+
   td {
     padding: 15px 30px 15px 0px;
   }
+
   td:first-child {
     color: #707070;
   }
@@ -128,11 +132,13 @@ export const Card = styled("div")`
   height: ${(props) => (props.height ? "auto" : "380px")};
   width: ${(props) => props.width}px;
   min-width: ${(props) => props.minwidth}px;
+
   hr {
     width: 100%;
     border: 1px solid #ddd;
     background: #ddd;
   }
+
   h3 {
     margin: 20px 15px 0 0;
   }

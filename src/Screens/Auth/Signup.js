@@ -11,6 +11,9 @@ import { Span } from "../../Components/ShoppingCart/ShoppingCart.Styles";
 import Button from "../../Components/Button/Button";
 import { Text } from "../../App.Styles";
 import { useState } from "react";
+import NavBar from "../../Components/NavBar/NavBar";
+import { GrayLine } from "../Gust/HomeScreen/HomeScreen.Styles";
+import Product from "../../Assets/Product.png";
 
 function SignUp() {
   const [value, setValue] = useState("");
@@ -26,29 +29,29 @@ function SignUp() {
           <Text fontSize="32px" color="#AEAEAE" marginA="0 0 52px">
             Sign up and get exclusive offers from us
           </Text>
-          <Text22PX>Name</Text22PX>
+          <Text fontSize="22px">Name</Text>
           <Input
             type="text"
             value={name}
             placeholder="name@example.com"
             onChange={(e) => setName(e.target.name)}
           />
-          <Text22PX>Enter your email address</Text22PX>
+          <Text fontSize="22px">Enter your email address</Text>
           <Input
             type="email"
             value={value}
             placeholder="name@example.com"
             onChange={(e) => setValue(e.target.value)}
           />
-          <Text22PX>Enter your password</Text22PX>
+          <Text fontSize="22px">Enter your password</Text>
           <Input
             type="password"
-            value={pass}
+            value={password}
             placeholder="........."
             size="50px"
-            onChange={(e) => setPassword(e.target.pass)}
+            onChange={(e) => setPassword(e.target.password)}
           />
-          <Text22PX>Confirm your password</Text22PX>
+          <Text fontSize="22px">Confirm your password</Text>
           <Input
             type="password"
             value={passwordConfirm}
@@ -65,17 +68,18 @@ function SignUp() {
           />
           <LoginColSmall>
             <GrayLine height="3px" />
-            <Text22PX color="#AEAEAE" weight="500">
+            <Text fontSize="22px" color="#AEAEAE" weight="500">
               Have an account ?{" "}
               <Span margin="0 0 0 10px" color="#242424">
                 {" "}
                 Login
               </Span>
-            </Text22PX>
+            </Text>
           </LoginColSmall>
         </LoginCol>
-        <SignUpImg src={} />
+        <SignUpImg src={Product} />
       </LoginRow>
     </LoginContainer>
   );
 }
+export default SignUp;
