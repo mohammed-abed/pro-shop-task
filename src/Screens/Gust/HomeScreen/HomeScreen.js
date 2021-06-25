@@ -23,8 +23,8 @@ const HomeScreen = () => {
       <HeroSection />
       <FeaturedCategoriesSec />
       <FeaturedProductsSection />
-      <TopRatedSection />
-      <RecentlyViewedSection />
+      {/*<TopRatedSection />*/}
+      {/*<RecentlyViewedSection />*/}
     </flexColumn>
   );
 };

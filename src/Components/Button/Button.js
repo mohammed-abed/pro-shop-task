@@ -7,9 +7,13 @@ const Button = ({
   width,
   borderRadius,
   style = {},
+  link = "",
+  isLoading,
 }) => {
   return (
     <CustomButton
+      to={link}
+      as={link ? "" : "button"}
       onClick={onClick}
       isGray={isGray}
       width={width}

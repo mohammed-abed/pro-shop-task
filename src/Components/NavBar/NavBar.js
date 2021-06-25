@@ -10,13 +10,13 @@ import {
 } from "./NavBar.Styles";
 import logo from "../../Assets/Screenshot 2021-06-14 110717.png";
 import { useState } from "react";
-import PersonIcon from "@material-ui/icons/Person";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../Redux/User/UserActions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Text } from "../../App.Styles";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -64,18 +64,24 @@ const NavBar = () => {
         </NavBox>
         <NavBox>
           {/*<PersonIcon to={state.userDetails.user._id ? "/" : "/login" style={StyleObj} />*/}
-          <Icon to={state.userDetails.user._id ? "/" : "/login"}>
+          <Link to={"/login"}>
+            <login />
+            <Text fontSize={"13px"} color={"#fff"}>
+              Login / Sign up
+            </Text>
+          </Link>
+          {/* <Icon to={"/login"}>
             <PersonIcon style={Style} />
-            {state.userDetails.user._id ? (
-              <Text fontSize={"13px"} color={"#fff"}>
-                Profile
-              </Text>
-            ) : (
-              <Text fontSize={"13px"} color={"#fff"}>
-                Login / Sign up
-              </Text>
-            )}
-          </Icon>
+          {state.userDetails.user._id ? (
+            <Text fontSize={"13px"} color={"#fff"}>
+              Profile
+            </Text>
+          ) : (
+            <Text fontSize={"13px"} color={"#fff"}>
+              Login / Sign up
+            </Text>
+          )}*/}
+          {/*</Icon>*/}
           {/*<BookmarkIcon style={StyleObj} />*/}
           <Icon to={"/product"}>
             <span>0</span>

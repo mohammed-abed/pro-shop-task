@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { FlexCol, Image } from "../../App.Styles";
+import { FlexCol } from "../../App.Styles";
 import {
   ErrorMsg,
   FormInput,
@@ -9,21 +9,22 @@ import {
 } from "./Login.Styles";
 import Button from "../../Components/Button/Button";
 import { LoginSchema } from "./Schema";
-import NavBar from "../../Components/NavBar/NavBar";
 import Product from "../../Assets/Product.png";
-import { useState } from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../../Redux/User/UserActions";
-import axios from "axios";
+
 // {setUser}
 function Login() {
-  const [error, setError] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const state = useSelector((store) => store);
+  const error = state.userDetails.error;
+  const isLoading = state.userDetails.isLoading;
+  // const [error, setError] = useState();
+  // const [isLoading, setIsLoading] = useState(false);
   const History = useHistory();
   const dispatch = useDispatch();
   const handleSaveChange = async (values) => {
-    setError("");
+    /* setError("");
     setIsLoading(true);
     try {
       const response = await axios.post("/users/login", values);
@@ -34,7 +35,8 @@ function Login() {
     } catch (e) {
       setError(e.response.data.message);
     }
-    setIsLoading(false);
+    setIsLoading(false);*/
+    dispatch(loginAction(values, history));
   };
   return (
     <LoginContainer>
@@ -75,10 +77,22 @@ function Login() {
               );
             }}
           </Formik>
+          <Button
+            link={"/register"}
+            width={"100%"}
+            borderRadius={20}
+            text={"Sign up now"}
+            style={{
+              border: "3px solid #FCDD06",
+              marginTop: 40,
+              background: "#fff",
+            }}
+          />
         </FlexCol>
         <LoginImg src={Product} />
       </LoginRow>
     </LoginContainer>
   );
 }
+
 export default Login;
