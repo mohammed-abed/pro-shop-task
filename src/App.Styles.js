@@ -143,3 +143,10 @@ export const Card = styled("div")`
     margin: 20px 15px 0 0;
   }
 `;
+export const InnerCard = styled(FlexRow)`
+  max-width: 1640px;
+  width: 100%;
+  margin: 0 auto;
+  margin: ${(props) => props.margin};
+  /* border:2px solid blue; */
+`;

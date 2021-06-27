@@ -1,4 +1,7 @@
 import {
+  GET_PROFILE_FAILED,
+  GET_PROFILE_START,
+  GET_PROFILE_SUCCESS,
   USER_LOGIN_START,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT_SUCCESS,
@@ -77,5 +80,26 @@ export const logoutAction = () => {
   return {
     payload: null,
     type: USER_LOGOUT_SUCCESS,
+  };
+};
+export const getProfileAction = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: GET_PROFILE_START,
+    });
+    try {
+      const response = await axios.get("/users/login");
+      dispatch({
+        type: GET_PROFILE_SUCCESS,
+        payload: response.data,
+      });
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.response);
+      dispatch({
+        payload: e.response.data.message,
+        type: GET_PROFILE_FAILED,
+      });
+    }
   };
 };
