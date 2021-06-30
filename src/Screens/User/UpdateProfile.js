@@ -1,3 +1,12 @@
+import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProfileAction } from "../../Redux/User/userActions";
+import { InnerSection, Typography } from "../../App.Styles";
+import { Form } from "formik";
+import { ErrorMsg, Input } from "../Auth/Login.Styles";
+import Button from "../../Components/Button/Button";
+
 function UpdateProfile(props) {
   const history = useHistory();
   const dispatch = useDispatch();

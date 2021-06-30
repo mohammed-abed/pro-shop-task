@@ -1,3 +1,23 @@
+import { useEffect, useState } from "react";
+import { getFeaturedProducts } from "../Redux/Guest/guestActions";
+import FeaturedProductsSection from "../Screens/Gust/HomeScreen/FeaturedProductsSection";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router";
+import { FlexColumn, FlexRow, Typography } from "../App.Styles";
+import {
+  FlexColWhite,
+  HeroSection,
+  Image,
+  RIcon,
+  SpecificationContainer,
+  StyledFlexColumn,
+  Title,
+} from "./ProductPage.Styles";
+import Button from "../Components/Button/Button";
+import RemoveIcon from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+
 function ProductPage(props) {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
@@ -5,7 +25,7 @@ function ProductPage(props) {
   const params = useParams();
   const history = useHistory();
   const product = state.guestState.product;
-  console.log(state);
+  //console.log(state);
 
   const goBack = () => {
     history.goBack();

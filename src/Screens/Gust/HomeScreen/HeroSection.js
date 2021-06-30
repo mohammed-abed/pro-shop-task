@@ -62,7 +62,9 @@ const HeroSection = () => {
                   />
                 </SideBox>
                 <SideBox>
-                  <Image src={"https://proshop-ms.herokuapp.com/" + item.image} />
+                  <Image
+                    src={"https://proshop-ms.herokuapp.com/" + item.image}
+                  />
                 </SideBox>
               </HeroBox>
             ))}
@@ -109,7 +111,7 @@ const HeroSection = () => {
             </Arrow>
           </FlexRow>
         </InnerSection>
-      {/*  <InnerSection>
+        {/*  <InnerSection>
           <SwipeableViews
             style={Object.assign({}, styles.root, styles.root)}
             index={sliderIndex}
@@ -234,7 +236,7 @@ const HeroSection = () => {
               &#10095;
             </Arrow>
           </FlexRow>*/}
-        </InnerSection>
+        {/*</InnerSection>*/}
         {/* <Pagination dots={3} index={sliderIndex} onChangeIndex={this.handleChangeIndex} /> */}
       </FlexBox>
     </FlexColumn>

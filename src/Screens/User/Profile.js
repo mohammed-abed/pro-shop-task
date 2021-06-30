@@ -15,7 +15,8 @@ import Product from "../../Assets/Product.png";
 import { GrayLine } from "../Gust/HomeScreen/HomeScreen.Styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProfileAction } from "../../Redux/User/userActions";
+import { getProfileAction, logoutAction } from "../../Redux/User/userActions";
+import UpdateProfile from "./UpdateProfile";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -45,29 +46,33 @@ function Profile() {
         }}
       >
         <FlexRow style={{ justifyContent: "flex-start" }}>
-          <Image
+          {/* <Image
             src={photo}
             width={true}
             height={true}
             border={true}
             style={{ marginBottom: "30px" }}
-          />
+          />*/}
           <h3 style={{ fontSize: "32px" }}>{state.userDetails.user.name}</h3>
         </FlexRow>
         <Text weight="500" style={{ margin: "0 0 30px 15px" }} fontSize="24px">
           My Orders
         </Text>
-        <Text weight="500" style={{ margin: "0 0 30px 15px" }} fontSize="24px">
+        {/*<Text weight="500" style={{ margin: "0 0 30px 15px" }} fontSize="24px">
           Wishlist
         </Text>
         <Text weight="500" style={{ margin: "0 0 30px 15px" }} fontSize="24px">
           Notifcations
-        </Text>
+        </Text>*/}
         <Text weight="500" style={{ margin: "0 0 30px 15px" }} fontSize="24px">
           Settings
         </Text>
         <GrayLine />
         <Text
+          onClick={() => {
+            dispatch(logoutAction());
+            localStorage.removeItem("user");
+          }}
           fontWeight={true}
           style={{ margin: "0 0 30px 15px" }}
           fontSize="24px"
@@ -100,20 +105,23 @@ function Profile() {
           </h3>
           <FlexRow style={{ marginBottom: "45px" }}>
             <Text width="200px" weight="500" fontSize="24px">
-              First Name
+              Name
             </Text>
-            <Text weight="500" fontSize="24px">
+            <Text width="200px" weight="500" fontSize="24px">
+              {state.userDetails.user.name}
+            </Text>
+            {/* <Text weight="500" fontSize="24px">
               {fullName[0]}
-            </Text>
+            </Text>*/}
           </FlexRow>
-          <FlexRow style={{ marginBottom: "45px" }}>
+          {/* <FlexRow style={{ marginBottom: "45px" }}>
             <Text width="200px" fontSize="24px" weight="500">
               Last Name
             </Text>
             <Text weight="500" fontSize="24px">
               {fullName[fullName.length - 1]}
             </Text>
-          </FlexRow>
+          </FlexRow>*/}
           <FlexRow style={{ marginBottom: "45px" }}>
             <Text width="200px" fontSize="24px" weight="500">
               Email
@@ -122,24 +130,24 @@ function Profile() {
               {state.userDetails.user.email}
             </Text>
           </FlexRow>
-          <FlexRow style={{ marginBottom: "45px" }}>
+          {/*<FlexRow style={{ marginBottom: "45px" }}>
             <Text width="200px" fontSize="24px" weight="500">
               Birthday
             </Text>
             <Text weight="500" fontSize="24px">
               30/12/1997
             </Text>
-          </FlexRow>
-          <FlexRow>
+          </FlexRow>*/}
+          {/*  <FlexRow>
             <Button
               fontSize="13px"
               text="Change Password"
               width={"155px"}
               height={"35px"}
             />
-          </FlexRow>
+          </FlexRow>*/}
         </FlexCol>
-        <FlexCol
+        {/*    <FlexCol
           width={"300px"}
           style={{ justifyContent: "flex-start" }}
           height={"380px"}
@@ -153,8 +161,15 @@ function Profile() {
             margin={"30px 0"}
             text=" Upload new photo"
           />
-        </FlexCol>
+        </FlexCol>*/}
       </FlexRow>
+      <Button
+        style={{ marginTop: 50 }}
+        text={"Update Profile"}
+        link={"/update-profile"}
+        width={"220px"}
+        borderRadius={6}
+      />
     </InnerCard>
   );
 }
@@ -215,3 +230,4 @@ function Profile() {
   );
 }
 */
+export default Profile;
