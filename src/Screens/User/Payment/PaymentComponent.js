@@ -7,11 +7,12 @@ import {
   ShippingAddressForm,
   ShippingForm,
 } from "./Payment.Styles";
-import { ErrorMsg } from "../../Auth/Login.Styles";
+import { ErrorMsg, Input } from "../../Auth/Login.Styles";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { ShippingSchema } from "../../Auth/Schema";
+import { addShippingAddress } from "../../../Redux/Cart/cartActions";
 
 function PaymentComponent(props) {
   const dispatch = useDispatch();

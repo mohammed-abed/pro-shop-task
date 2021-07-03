@@ -1,3 +1,6 @@
+import { FlexColumn, FlexRow, Typography } from "../App.Styles";
+import { OrderDetailImg, OrderItem } from "./OrderCard.Styles";
+
 export default function OrderCard(props) {
   return (
     <OrderItem>

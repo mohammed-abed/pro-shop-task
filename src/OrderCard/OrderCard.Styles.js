@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import { FlexColumn } from "../App.Styles";
+
 export const OrderItem = styled(FlexColumn)`
   min-height: 96px;
   margin-bottom: 38px;
