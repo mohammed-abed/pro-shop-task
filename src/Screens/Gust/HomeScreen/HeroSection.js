@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-const HeroSection = () => {
+const HeroSection = ({ sliderProducts }) => {
   const [sliderIndex, setSliderIndex] = useState(0);
 
   const handleChangeIndex = () => {};

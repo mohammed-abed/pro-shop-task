@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { getFeaturedProducts } from "../Redux/Guest/guestActions";
+import { getFeaturedProducts, getProduct } from "../Redux/Guest/guestActions";
 import FeaturedProductsSection from "../Screens/Gust/HomeScreen/FeaturedProductsSection";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { FlexColumn, FlexRow, Typography } from "../App.Styles";
+import {
+  FlexColumn,
+  FlexRow,
+  SpinnerContainer,
+  Typography,
+} from "../App.Styles";
 import {
   FlexColWhite,
   HeroSection,
@@ -17,6 +22,7 @@ import Button from "../Components/Button/Button";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import Review from "../Review/Review";
 
 function ProductPage(props) {
   const [count, setCount] = useState(1);

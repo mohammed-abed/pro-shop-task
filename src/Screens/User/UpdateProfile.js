@@ -1,11 +1,20 @@
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProfileAction } from "../../Redux/User/userActions";
-import { InnerSection, Typography } from "../../App.Styles";
-import { Form } from "formik";
+import {
+  getProfileAction,
+  updateProfileAction,
+} from "../../Redux/User/userActions";
+import {
+  GrayContainer,
+  InnerSection,
+  SpinnerContainer,
+  Typography,
+} from "../../App.Styles";
+import { Form, Formik } from "formik";
 import { ErrorMsg, Input } from "../Auth/Login.Styles";
 import Button from "../../Components/Button/Button";
+import { updateProfileSchema } from "../Auth/Schema";
 
 function UpdateProfile(props) {
   const history = useHistory();

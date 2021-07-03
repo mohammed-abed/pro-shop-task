@@ -14,6 +14,7 @@ const Button = ({
     <CustomButton
       to={link}
       as={link ? "" : "button"}
+      disabled={isLoading}
       onClick={onClick}
       isGray={isGray}
       width={width}

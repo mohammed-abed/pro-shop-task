@@ -5,6 +5,7 @@ import {
   TextReviewDate,
   TextReviewDescription,
 } from "./Review.Styles";
+import Rating from "@material-ui/lab/Rating";
 
 export default function Review({ title, text, rate, icon, date }) {
   return (

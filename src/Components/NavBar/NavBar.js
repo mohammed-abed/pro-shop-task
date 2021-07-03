@@ -13,7 +13,7 @@ import { useState } from "react";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutAction } from "../../Redux/User/UserActions";
+import { logoutAction } from "../../Redux/User/userActions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Text } from "../../App.Styles";
 import { Link } from "react-router-dom";

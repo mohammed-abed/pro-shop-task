@@ -1,4 +1,5 @@
 import { FlexRow, Typography } from "../App.Styles";
+import styled from "styled-components";
 
 export const ReviewTitle = styled(Typography)`
   color: #707070;

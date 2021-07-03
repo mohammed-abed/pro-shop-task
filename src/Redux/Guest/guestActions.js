@@ -47,7 +47,7 @@ export const getFeaturedProducts = () => async (dispatch) => {
     dispatch({
       type: GET_FEATURED_PRODUCTS_FAILED,
       // payload: e?.response?.message,
-      payload: response.data.products,
+      payload: e.response.data.products, //??
     });
   }
 };

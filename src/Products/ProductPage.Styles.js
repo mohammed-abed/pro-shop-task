@@ -1,3 +1,6 @@
+import { FlexColumn, InnerSection, Typography } from "../App.Styles";
+import styled from "styled-components";
+
 export const SpecificationContainer = styled(InnerSection)`
   display: flex;
   justify-content: start;

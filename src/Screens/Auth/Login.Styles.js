@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow, InnerSection, Image } from "../../App.Styles";
+import {
+  FlexCol,
+  FlexRow,
+  InnerSection,
+  Image,
+  FlexColumn,
+} from "../../App.Styles";
 import { Field } from "formik";
 
 export const LoginRow = styled(FlexRow)`
@@ -73,4 +79,18 @@ export const FormInput = styled(Field)`
 export const ErrorMsg = styled("span")`
   color: red;
   width: 100%;
+`;
+
+export const FormBox = styled(FlexColumn)`
+  width: 398px;
+  justify-content: start;
+  align-items: start;
+  margin-bottom: auto;
+`;
+
+export const StyledImage = styled("img")`
+  width: 849px;
+  object-fit: cover;
+  height: auto;
+  margin-bottom: 40px;
 `;
