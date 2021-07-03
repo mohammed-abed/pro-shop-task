@@ -150,3 +150,41 @@ export const InnerCard = styled(FlexRow)`
   margin: ${(props) => props.margin};
   /* border:2px solid blue; */
 `;
+export const GrayContainer = styled(FlexColumn)`
+  background: #f2f2f2 0% 0% no-repeat padding-box;
+  border-radius: 16px;
+  width: ${(props) => (props.isBig ? "950px" : "398px")};
+  height: 380px;
+  padding: 1% 2%;
+  margin-right: 32px;
+  justify-content: start;
+  align-items: start;
+`;
+export const SpinnerContainer = styled.div`
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border: 6px solid #fcdd06;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border-top-color: #ddd;
+  margin-top: 20%;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+`;
+export const Line = styled("hr")`
+  width: ${(props) => (props.width ? props.width : "200px")};
+  height: ${(props) => (props.height ? props.height : "1px")};
+  color: ${(props) => (props.color ? props.color : "#000")};
+`;

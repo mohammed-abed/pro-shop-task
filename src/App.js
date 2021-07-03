@@ -5,7 +5,13 @@ import Login from "./Screens/Auth/Login";
 import { Route, Switch } from "react-router";
 import HomeScreen from "./Screens/Gust/HomeScreen/HomeScreen";
 import { useSelector } from "react-redux";
-import Register from "./Screens/Auth/Register";
+import Signup from "./Screens/Auth/Signup";
+import CartPage from "./Screens/User/Cart/CartPage";
+import ProductPage from "./Products/ProductPage";
+import UpdateProfile from "./Screens/User/UpdateProfile";
+import Profile from "./Screens/User/Profile";
+import { Fragment } from "react";
+import Payment from "./Screens/User/Payment/Payment";
 
 function App() {
   // const localStr = JSON.parse(localStorage.getItem('user'))
@@ -14,49 +20,51 @@ function App() {
 
   return (
     <MainContainer>
-      {/*  user={user} setUser={setUser} */}
       <NavBar />
       <Switch>
-        <Route path={"/"} component={HomeScreen} />
-        <Route path={"/login"} component={RecentlyViewedSection} />
-        {state.userDetails.user._id ? null : (
-          <Route
-            path={"/login"}
-            component={() => {
-              return <Login />;
-            }}
-          />
+        <Route path={"/"} exact={true} component={HomeScreen} />
+        <Route
+          path={"/product/:id/:name"}
+          exact={true}
+          component={ProductPage}
+        />
+        {state.userDetails.user._id ? (
+          <>
+            <Route path={"/cart"} exact={true} component={CartPage} />
+            <Route path={"/profile"} exact={true} component={Profile} />
+            <Route
+              path={"/proceed-checkout/shipping-address"}
+              exact={true}
+              component={Payment}
+            />
+            <Route
+              path={"/proceed-checkout/place-order"}
+              exact={true}
+              component={Payment}
+            />
+            <Route
+              path={"/update-profile"}
+              exact={true}
+              component={UpdateProfile}
+            />
+          </>
+        ) : (
+          <Fragment>
+            <Route
+              path={"/login"}
+              component={() => {
+                return <Login />;
+              }}
+            />
+            <Route
+              path={"/Signup"}
+              component={() => {
+                return <Signup />;
+              }}
+            />
+          </Fragment>
         )}
-        {state.userDetails.user._id ? null : (
-          <Route
-            path={"/register"}
-            component={() => {
-              return <Register />;
-            }}
-          />
-        )}
-        {/*{*/}
-        {/*  state.userDetails.user._id ? null : (*/}
-        {/*    <Route exact={true} path={"/login"} component={Login} />*/}
-        {/*  )*/}
-        // ()=>
-        {
-          //   return <Login  />/*setUser={setUser}*/
-          // }
-        }
       </Switch>
-      */}
-      {/*  <HomeScreen />*/}
-      {/*  <FeaturedProductPage />
-      <ShoppingCartPage />
-      <Payment />
-      <RecentlyViewedSection />
-
-      <PlaceOrder />
-      <ReviewOrder />
-      <FeaturedProductPage />
-      <Profile />*/}
-      {/*<Signup />*/}
     </MainContainer>
   );
 }
