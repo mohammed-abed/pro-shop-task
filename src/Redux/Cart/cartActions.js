@@ -52,7 +52,6 @@ export const decreaseCartItemQty =
       const index = state.cart.cart.findIndex(
         (item) => item._id == isProductExist._id
       );
-
       state.cart.cart[index] = isProductExist;
 
       dispatch({

@@ -11,4 +11,15 @@ export const CustomButton = styled(Link)`
   border-radius: ${(props) => (props.borderRadius ? props.borderRadius : 10)}px;
   border: none;
   font-size: 24px;
+  cursor: pointer;
+  text-decoration: none;
+
+  ${(props) =>
+    props.disabled
+      ? `
+        background:gray;
+        color:white;
+        cursor: none;
+  `
+      : ""}
 `;

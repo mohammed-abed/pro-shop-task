@@ -4,13 +4,18 @@ import { FlexRow, InnerSection, Typography } from "../../../App.Styles";
 import { CartList, ProceedBox } from "./CartPage.Styles";
 import CartItem from "../../../Components/CartItem/CartItem";
 import Navigator from "../../../Components/Navigator/Navigator";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import {
+  addCartItem,
+  decreaseCartItemQty,
+  deleteCartItem,
+} from "../../../Redux/Cart/cartActions";
 
 function CartScreen(props) {
   const [counter, setCounter] = useState(1);
   const state = useSelector((state) => state);
-
+  const dispatch = useDispatch();
   return (
     <InnerSection style={{ marginTop: 32 }}>
       <Navigator name={"Shopping Cart"} />
@@ -18,13 +23,20 @@ function CartScreen(props) {
         <CartList>
           {state.cart.cart.map((item) => (
             <CartItem
+              increaseCounter={() => {
+                if (item.quantity < item.countInStock)
+                  dispatch(addCartItem(item, 1));
+              }}
+              decreaseCounter={() => {
+                if (item.quantity > 1) dispatch(decreaseCartItemQty(item, 1));
+              }}
               key={item._id}
               name={item.name}
               price={item.price}
               image={item.image}
               counter={item.quantity}
               setCounter={setCounter}
-              handleDelete={() => {}}
+              handleDelete={() => dispatch(deleteCartItem(item._id))}
             />
           ))}
         </CartList>
@@ -41,7 +53,12 @@ function CartScreen(props) {
             fontWeight={700}
             style={{ marginBottom: 80 }}
           >
-            Total ({state.cart.cart.length}) items
+            Total (
+            {state.cart.cart.reduce((acc, item) => {
+              return acc + item.quantity;
+            }, 0)}
+            ) items
+            {/*//Total ({state.cart.cart.length}) items*/}
           </Typography>
           <Typography
             fontSize={38}
@@ -59,7 +76,7 @@ function CartScreen(props) {
 
           <Button
             text={"Proceed to checkout"}
-            link={"/proceed-checkout"}
+            link={"/proceed-checkout/shipping-address"}
             borderRadius={10}
             width={"100%"}
           />

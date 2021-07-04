@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { getFeaturedProducts, getProduct } from "../Redux/Guest/guestActions";
-import FeaturedProductsSection from "../Screens/Gust/HomeScreen/FeaturedProductsSection";
+import {
+  getFeaturedProducts,
+  getProduct,
+} from "../../../Redux/Guest/guestActions";
+import FeaturedProductsSection from "../HomeScreen/FeaturedProductsSection";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import {
@@ -8,7 +11,7 @@ import {
   FlexRow,
   SpinnerContainer,
   Typography,
-} from "../App.Styles";
+} from "../../../App.Styles";
 import {
   FlexColWhite,
   HeroSection,
@@ -18,11 +21,13 @@ import {
   StyledFlexColumn,
   Title,
 } from "./ProductPage.Styles";
-import Button from "../Components/Button/Button";
+import Button from "../../../Components/Button/Button";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import Review from "../Review/Review";
+import Review from "../../../Review/Review";
+import { addCartItem } from "../../../Redux/Cart/cartActions";
+import Navigator from "../../../Components/Navigator/Navigator";
 
 function ProductPage(props) {
   const [count, setCount] = useState(1);
@@ -31,7 +36,6 @@ function ProductPage(props) {
   const params = useParams();
   const history = useHistory();
   const product = state.guestState.product;
-  //console.log(state);
 
   const goBack = () => {
     history.goBack();
@@ -47,7 +51,7 @@ function ProductPage(props) {
     <FlexColumn style={{ marginBottom: 100 }}>
       <SpecificationContainer>
         <HeroSection>
-          <Title>
+          {/*<Title>
             <span
               style={{ color: "#707070", marginRight: 5, cursor: "pointer" }}
               onClick={goBack}
@@ -55,7 +59,9 @@ function ProductPage(props) {
               Back{" "}
             </span>{" "}
             /{product.product.name}
-          </Title>
+          </Title>*/}
+          <Navigator name={product.product.name} />
+
           <FlexRow style={{ alignItems: "flex-start" }}>
             <FlexColumn
               style={{
@@ -114,7 +120,8 @@ function ProductPage(props) {
                     </Typography>
                     <RIcon
                       onClick={() => {
-                        if (count >= 1) setCount(count + 1);
+                        if (count < product.product.countInStock)
+                          setCount(count + 1);
                       }}
                     >
                       <AddIcon />
@@ -159,6 +166,12 @@ function ProductPage(props) {
                       width={"324px"}
                       borderRadius={10}
                       style={{ height: 62 }}
+                      disabled={product.product.countInStock}
+                      link={"/cart"}
+                      onClick={() => {
+                        if (product.product.countInStock)
+                          dispatch(addCartItem(product.product, count));
+                      }}
                     />
                   </FlexRow>
                 </FlexRow>

@@ -14,7 +14,7 @@ import {
 import { Form, Formik } from "formik";
 import { ErrorMsg, Input } from "../Auth/Login.Styles";
 import Button from "../../Components/Button/Button";
-import { updateProfileSchema } from "../Auth/Schema";
+import { updateProfileSchema } from "../../Schemas/Schema";
 
 function UpdateProfile(props) {
   const history = useHistory();

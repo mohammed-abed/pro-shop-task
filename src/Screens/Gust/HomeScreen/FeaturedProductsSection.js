@@ -1,30 +1,13 @@
 import {
   FlexBox,
-  FlexColumn,
   FlexRow,
   InnerSection,
   Typography,
 } from "../../../App.Styles";
 import SwipeableViews from "react-swipeable-views";
 import { useState } from "react";
-import {
-  Arrow,
-  Dot,
-  HeroBox,
-  HeroTitle,
-  SideBox,
-  Image,
-  YellowLine,
-  GrayLine,
-} from "./HomeScreen.Styles";
-import Button from "../../../Components/Button/Button";
-import slideImage from "../../../Assets/Screenshot 2021-06-14 110717.png";
+import { Dot, GrayLine, YellowLine } from "./HomeScreen.Styles";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
-import Product from "../../../Assets/Product.png";
-import StarIcon from "@material-ui/icons/Star";
-import StarHalfIcon from "@material-ui/icons/StarHalf";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 
 const styles = {
   root: {
@@ -34,145 +17,80 @@ const styles = {
   },
 };
 
-const FeaturedProduct = () => {
+function FeaturedProductsSection({ products }) {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const chunkSize =
+    window.innerWidth > 1100 ? 3 : window.innerWidth > 800 ? 2 : 1;
+
   const handleChangeIndex = () => {};
 
+  const getSlides = () => {
+    const chunks = [];
+
+    products.map((i, idx) => {
+      if (idx % chunkSize === 0) {
+        chunks.push([]);
+      }
+
+      const firstArrayLength = chunks.length;
+      const secondArrayLength = chunks[firstArrayLength - 1].length;
+
+      chunks[firstArrayLength - 1][secondArrayLength] = i;
+
+      return i;
+    });
+
+    return chunks.map((i, idx) => (
+      <FlexRow key={idx}>
+        {i.map((item) => (
+          <ProductCard
+            product={item}
+            key={item._id}
+            id={item._id}
+            image={"https://proshop-ms.herokuapp.com/" + item.image}
+            name={item.name}
+            discount={0}
+            price={item.price}
+            rate={item.rating}
+          />
+        ))}
+      </FlexRow>
+    ));
+  };
+
   return (
-    <FlexBox bgcolor={"#F7F8FC"}>
-      <InnerSection margin={"60px 0"}>
-        <HeroTitle>Featured Products</HeroTitle>
-        <FlexRow justify={"center"}>
-          <YellowLine />
+    <FlexBox color={"#F7F8FC"}>
+      <InnerSection>
+        <FlexRow style={{ marginTop: 32 }}>
+          <Typography fontWeight={700} fontSize={32}>
+            Featured Products
+          </Typography>
         </FlexRow>
+        <YellowLine />
         <GrayLine />
         <SwipeableViews
           style={Object.assign({}, styles.root, styles.root)}
           index={sliderIndex}
           onChangeIndex={handleChangeIndex}
         >
-          <FlexRow>
-            <ProductCard
-              img={Product}
-              text={"Apple iPhone 11 Pro 256GB Memory"}
-              height={"655px"}
-              value={true}
-              price={"$499.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              star={<StarIcon />}
-              imgHeight={"60%"}
-              emptyStar={<StarHalfIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Apple Airpods Wireless Bluetooth Headset"}
-              height={"655px"}
-              margin={true}
-              value={true}
-              SaveBtn={<BookmarkBorderIcon />}
-              price={"$99.99"}
-              newPrice={"$89.99"}
-              Discount={"-30%"}
-              imgHeight={"60%"}
-              star={<StarIcon />}
-              emptyStar={<StarBorderIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Sony Playstation 4 Pro White Version"}
-              price={"$399.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              height={"655px"}
-              imgHeight={"60%"}
-              star={<StarBorderIcon />}
-              emptyStar={<StarIcon />}
-            />
-          </FlexRow>
-          <FlexRow>
-            <ProductCard
-              img={Product}
-              text={"Apple iPhone 11 Pro 256GB Memory"}
-              height={"655px"}
-              value={true}
-              price={"$499.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              star={<StarIcon />}
-              imgHeight={"60%"}
-              emptyStar={<StarHalfIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Apple Airpods Wireless Bluetooth Headset"}
-              height={"655px"}
-              margin={true}
-              value={true}
-              SaveBtn={<BookmarkBorderIcon />}
-              price={"$99.99"}
-              newPrice={"$89.99"}
-              Discount={"-30%"}
-              imgHeight={"60%"}
-              star={<StarIcon />}
-              emptyStar={<StarBorderIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Sony Playstation 4 Pro White Version"}
-              price={"$399.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              height={"655px"}
-              imgHeight={"60%"}
-              star={<StarBorderIcon />}
-              emptyStar={<StarIcon />}
-            />
-          </FlexRow>
-          <FlexRow>
-            <ProductCard
-              img={Product}
-              text={"Apple iPhone 11 Pro 256GB Memory"}
-              height={"655px"}
-              value={true}
-              price={"$499.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              star={<StarIcon />}
-              imgHeight={"60%"}
-              emptyStar={<StarHalfIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Apple Airpods Wireless Bluetooth Headset"}
-              height={"655px"}
-              margin={true}
-              value={true}
-              SaveBtn={<BookmarkBorderIcon />}
-              price={"$99.99"}
-              newPrice={"$89.99"}
-              Discount={"-30%"}
-              imgHeight={"60%"}
-              star={<StarIcon />}
-              emptyStar={<StarBorderIcon />}
-            />
-
-            <ProductCard
-              img={Product}
-              text={"Sony Playstation 4 Pro White Version"}
-              price={"$399.99"}
-              SaveBtn={<BookmarkBorderIcon />}
-              height={"655px"}
-              imgHeight={"60%"}
-              star={<StarBorderIcon />}
-              emptyStar={<StarIcon />}
-            />
-          </FlexRow>
+          {getSlides()}
         </SwipeableViews>
-        ///dot
+
+        <FlexRow style={{ marginBottom: 40, marginTop: 40 }}>
+          {getSlides().map((i, idx) => (
+            <Dot
+              size={14}
+              key={idx}
+              isGray={sliderIndex !== idx}
+              onClick={() => {
+                setSliderIndex(idx);
+              }}
+            />
+          ))}
+        </FlexRow>
       </InnerSection>
     </FlexBox>
   );
-};
+}
 
-export default FeaturedProduct;
+export default FeaturedProductsSection;

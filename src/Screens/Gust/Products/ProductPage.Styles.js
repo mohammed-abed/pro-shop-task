@@ -1,4 +1,4 @@
-import { FlexColumn, InnerSection, Typography } from "../App.Styles";
+import { FlexColumn, InnerSection, Typography } from "../../../App.Styles";
 import styled from "styled-components";
 
 export const SpecificationContainer = styled(InnerSection)`

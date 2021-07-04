@@ -1,17 +1,9 @@
-import {
-  FlexCol,
-  FlexRow,
-  InnerSection,
-  Line,
-  Text,
-  Typography,
-} from "../../../App.Styles";
-import Button from "../../../Components/Button/Button";
-import TopRateSection from "../../Gust/HomeScreen/TopRatedSection";
+import { FlexRow, InnerSection, Line, Typography } from "../../../App.Styles";
 import PaymentComponent from "./PaymentComponent";
 import { Num } from "./Payment.Styles";
 import { useLocation } from "react-router";
 import PlaceOrderComponent from "./PlaceOrderComponent";
+
 function Payment(props) {
   const location = useLocation();
   const isShippingPage = location.pathname.includes("shipping-address");

@@ -9,6 +9,7 @@ const Button = ({
   style = {},
   link = "",
   isLoading,
+  disabled,
 }) => {
   return (
     <CustomButton

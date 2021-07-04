@@ -1,4 +1,4 @@
-import { Title } from "../../Products/ProductPage.Styles";
+import { Title } from "../../Screens/Gust/Products/ProductPage.Styles";
 import { useHistory } from "react-router";
 
 function Navigator(props) {

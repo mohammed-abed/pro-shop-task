@@ -16,7 +16,6 @@ import {
   SideBox,
 } from "./HomeScreen.Styles";
 import Button from "../../../Components/Button/Button";
-import Product from "../../../Assets/Product.png";
 
 const styles = {
   root: {
@@ -55,6 +54,7 @@ const HeroSection = ({ sliderProducts }) => {
                     {item.description.substring(0, 80)}
                   </Typography>
                   <Button
+                    link={`/product/${item._id}/${item.name}`}
                     text="Shop now"
                     width={"220px"}
                     borderRadius={20}

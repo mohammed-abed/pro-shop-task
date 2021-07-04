@@ -1,30 +1,16 @@
-import {
-  ErrorMsg,
-  FormBox,
-  Input,
-  LoginCol,
-  LoginColSmall,
-  LoginContainer,
-  LoginRow,
-  LoginTitle,
-  SignUpImg,
-  StyledImage,
-} from "./Login.Styles";
-import { Span } from "../../Components/ShoppingCart/ShoppingCart.Styles";
+import { ErrorMsg, FormBox, Input, StyledImage } from "./Login.Styles";
 import Button from "../../Components/Button/Button";
-import { InnerSection, Text, Typography } from "../../App.Styles";
-import { useState } from "react";
-import NavBar from "../../Components/NavBar/NavBar";
+import { InnerSection, Typography } from "../../App.Styles";
 import { GrayLine } from "../Gust/HomeScreen/HomeScreen.Styles";
 import Product from "../../Assets/Product.png";
 import { registerAction } from "../../Redux/User/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Form, Formik } from "formik";
-import { registerSchema } from "./Schema";
+import { registerSchema } from "../../Schemas/Schema";
 import { Link } from "react-router-dom";
 
-function SignUp() {
+function Signup() {
   const history = useHistory();
   const dispatch = useDispatch();
   const state = useSelector((store) => store);
@@ -211,4 +197,5 @@ function SignUp() {
       </LoginRow></LoginContainer>*/
   }
 }
-export default SignUp;
+
+export default Signup;

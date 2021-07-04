@@ -4,7 +4,7 @@ import { Span } from "../ShoppingCart/ShoppingCart.Styles";
 import Button from "../Button/Button";
 import Product from "../../Assets/Product.png";
 
-function PlaceOreder() {
+function PlaceOrder() {
   return (
     <OrderContainer>
       <FlexCol margin="44px 0 0 0" align="flex-start" width="1516px">

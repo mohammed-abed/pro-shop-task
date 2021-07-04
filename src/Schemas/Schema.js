@@ -5,12 +5,10 @@ export const LoginSchema = () =>
     email: yup
       .string()
       .email("Please Enter a Valid Email ..")
-      .required("Please Enter an Email .."),
-    password: yup
-      .string("Please Enter a valid Password ..")
-      .min(6)
-      .required("Please Enter a Password .."),
+      .required("Please Enter a Email .."),
+    password: yup.string().min(5).required("Please Enter a Password .."),
   });
+
 export const registerSchema = () => {
   return yup.object({
     name: yup.string().required("Please enter a name"),

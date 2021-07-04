@@ -1,75 +1,75 @@
-import { FlexBox, FlexRow, Image, Text } from "../../App.Styles";
+import { FlexRow, Typography } from "../../App.Styles";
 import Button from "../../Components/Button/Button";
-import { CardContainer } from "./ProductCard.Styles.js";
-function ProductCard({
-  img,
-  text,
-  margin,
-  height,
-  star,
-  emptyStar,
-  value,
-  price,
-  Discount,
-  newPrice,
-  addBtn,
-  imgHeight,
-}) {
+import { CardContainer, CardLink } from "./ProductCard.Styles.js";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../../Redux/Cart/cartActions";
+import { CardImage } from "../CartItem/CartItem.Styles";
+import Rating from "@material-ui/lab/Rating";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+
+function ProductCard(props) {
+  const dispatch = useDispatch();
+
   return (
-    <CardContainer margin={margin} height={height}>
-      <FlexBox height={imgHeight}>
-        <Image src={img} />
-      </FlexBox>
-      <Text fontSize={"23px"} marginTop={"20px"}>
-        {text}
-      </Text>
-      {value ? (
-        <FlexRow marginTop={"20px"}>
-          {star}
-          {star}
-          {star}
-          {star}
-          {emptyStar}
+    <CardContainer widthBorder={props.widthBorder}>
+      <CardLink to={`/product/${props.id}/${props.name}`}>
+        <CardImage src={props.image} alt={props.name} />
+        <Typography fontSize={24}>{props.name}</Typography>
+        <Rating
+          readOnly={true}
+          defaultValue={props.rate}
+          name="simple-controlled"
+        />
+        <FlexRow
+          style={{
+            marginBottom: 18,
+            justifyContent: "space-between",
+            maxWidth: "40%",
+          }}
+        >
+          {props.discount > 0 && (
+            <Typography color={"#FC4059"} fontSize={30}>
+              $ {props.discount}
+            </Typography>
+          )}
+          <Typography
+            fontSize={30}
+            fontWeight={700}
+            style={{ textDecoration: props.discount && "line-through" }}
+          >
+            ${props.price}
+          </Typography>
         </FlexRow>
-      ) : (
-        <FlexRow marginTop={"20px"}>
-          {emptyStar}
-          {star}
-          {star}
-          {star}
-          {star}
-        </FlexRow>
-      )}
-      {Discount ? (
-        <FlexRow marginTop={"15px"}>
-          <Text weight={true} color={"#FC4059"} margin={"15px"}>
-            {newPrice}
-          </Text>
-          <Text weight={true} decoration={true} color={"#242424"}>
-            {price}
-          </Text>
-        </FlexRow>
-      ) : (
-        <FlexRow marginTop={"15px"}>
-          <Text weight={true} color={"#242424"}>
-            {price}
-          </Text>
-        </FlexRow>
-      )}
-      <FlexRow marginTop={"20px"}>
+      </CardLink>
+      <FlexRow>
         <Button
-          text={addBtn}
+          text={
+            <BookmarkBorderIcon
+              style={{
+                fontSize: 40,
+                color: "#242424",
+                fill: "#242424",
+                opacity: 0.3,
+              }}
+            />
+          }
           width={"54px"}
           borderRadius={10}
           isGray={true}
           style={{ height: 62, marginRight: 13 }}
         />
         <Button
+          disabled={props.product.countInStock}
           text="Add to cart"
           width={"324px"}
           borderRadius={10}
           style={{ height: 62 }}
           isGray={true}
+          link={"/cart"}
+          onClick={() => {
+            if (props.product.countInStock)
+              dispatch(addCartItem(props.product, 1));
+          }}
         />
       </FlexRow>
     </CardContainer>

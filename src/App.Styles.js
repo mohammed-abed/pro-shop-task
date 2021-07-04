@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const MainContainer = styled("main")`
   max-width: 1920px;
@@ -6,7 +7,7 @@ export const MainContainer = styled("main")`
   justify-content: start;
   align-items: center;
   width: 100%;
-  background: #ddd;
+  // background: #ddd;
   flex-direction: column;
 
   @media screen and (min-width: 1920px) {
@@ -187,4 +188,17 @@ export const Line = styled("hr")`
   width: ${(props) => (props.width ? props.width : "200px")};
   height: ${(props) => (props.height ? props.height : "1px")};
   color: ${(props) => (props.color ? props.color : "#000")};
+`;
+export const ProfileText = styled(Link)`
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: ${(props) => (props.isGray ? "#707070" : "#242424")};
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: auto;
+`;
+
+export const StyledRow = styled(FlexRow)`
+  justify-content: start;
 `;

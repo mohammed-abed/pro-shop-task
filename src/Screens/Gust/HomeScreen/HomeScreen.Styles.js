@@ -72,3 +72,9 @@ export const VirtecalLine = styled("hr")`
   opacity: 0.3;
   margin: ${(props) => (props.margin ? "0 21.5px" : "0")};
 `;
+export const BorderedBox = styled(FlexRow)`
+  border: 1px solid #fcdd06;
+  border-radius: 16px;
+  margin-bottom: 197px;
+  padding: 40px;
+`;

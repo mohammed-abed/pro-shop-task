@@ -41,13 +41,13 @@ export const getFeaturedProducts = () => async (dispatch) => {
 
     dispatch({
       type: GET_FEATURED_PRODUCTS_SUCCESS,
-      payload: response.data,
+      payload: response.data.products,
     });
   } catch (e) {
     dispatch({
       type: GET_FEATURED_PRODUCTS_FAILED,
       // payload: e?.response?.message,
-      payload: e.response.data.products, //??
+      payload: e?.response?.data.products, //??
     });
   }
 };

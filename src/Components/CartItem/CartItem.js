@@ -1,19 +1,29 @@
 import { FlexRow, Typography } from "../../App.Styles";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
-import { RIcon } from "../../Products/ProductPage.Styles";
+import { RIcon } from "../../Screens/Gust/Products/ProductPage.Styles";
 import propTypes from "prop-types";
 import { CardBox, CardImage, ContentBox } from "./CartItem.Styles";
+import { CrossSpan } from "../../Screens/User/Cart/CartPage.Styles";
 
-function CartItem({ counter, setCounter, price, image, name, handleDelete }) {
+function CartItem({
+  counter,
+  increaseCounter,
+  decreaseCounter,
+  price,
+  image,
+  name,
+  handleDelete,
+}) {
   return (
     <CardBox>
       <CardImage src={"https://proshop-ms.herokuapp.com/" + image} alt={name} />
       <ContentBox>
         <FlexRow style={{ justifyContent: "flex-end" }}>
-          <span style={{ fontSize: 14, padding: 10 }} onClick={handleDelete}>
+          {/* <span style={{ fontSize: 14, padding: 10 }} onClick={handleDelete}>
             x
-          </span>
+          </span>*/}
+          <CrossSpan onClick={handleDelete}>x</CrossSpan>
         </FlexRow>
         <Typography
           fontSize={24}
@@ -32,9 +42,10 @@ function CartItem({ counter, setCounter, price, image, name, handleDelete }) {
             }}
           >
             <RIcon
-              onClick={() => {
+              onClick={decreaseCounter}
+              /* onClick={() => {
                 if (counter > 1) setCounter(counter - 1);
-              }}
+              }}*/
             >
               <RemoveIcon />
             </RIcon>
@@ -48,9 +59,10 @@ function CartItem({ counter, setCounter, price, image, name, handleDelete }) {
               {counter}
             </Typography>
             <RIcon
-              onClick={() => {
+              onClick={increaseCounter}
+              /*  onClick={() => {
                 if (counter >= 1) setCounter(counter + 1);
-              }}
+              }}*/
             >
               <AddIcon />
             </RIcon>
@@ -74,7 +86,9 @@ function CartItem({ counter, setCounter, price, image, name, handleDelete }) {
 
 CartItem.defaultProps = {
   handleDelete: () => {},
-  setCounter: () => {},
+  // setCounter: () => {},
+  decreaseCounter: () => {},
+  increaseCounter: () => {},
   counter: 1,
 };
 
@@ -83,7 +97,9 @@ CartItem.propTypes = {
   image: propTypes.string.isRequired,
   counter: propTypes.number.isRequired,
   price: propTypes.number.isRequired,
-  setCounter: propTypes.func.isRequired,
+  // setCounter: propTypes.func.isRequired,
+  increaseCounter: propTypes.func.isRequired,
+  decreaseCounter: propTypes.func.isRequired,
   handleDelete: propTypes.func.isRequired,
 };
 

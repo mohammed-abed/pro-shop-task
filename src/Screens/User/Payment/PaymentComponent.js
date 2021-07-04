@@ -11,7 +11,7 @@ import { ErrorMsg, Input } from "../../Auth/Login.Styles";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { ShippingSchema } from "../../Auth/Schema";
+import { ShippingSchema } from "../../../Schemas/Schema";
 import { addShippingAddress } from "../../../Redux/Cart/cartActions";
 
 function PaymentComponent(props) {

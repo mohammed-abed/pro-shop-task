@@ -1,128 +1,128 @@
 import { Form, Formik } from "formik";
-import { FlexCol } from "../../App.Styles";
-import {
-  ErrorMsg,
-  FormInput,
-  LoginContainer,
-  LoginImg,
-  LoginRow,
-} from "./Login.Styles";
+import { InnerSection, Typography } from "../../App.Styles";
+import { ErrorMsg, FormBox, Input, StyledImage } from "./Login.Styles";
 import Button from "../../Components/Button/Button";
-import { LoginSchema } from "./Schema";
+import { LoginSchema } from "../../Schemas/Schema";
 import Product from "../../Assets/Product.png";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../Redux/User/userActions";
-import { useState } from "react";
-import axios from "axios";
+import { GrayLine } from "../Gust/HomeScreen/HomeScreen.Styles";
 
 // {setUser}
 function Login() {
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  const state = useSelector((store) => store);
+  const error = state.userDetails.error;
+  const isLoading = state.userDetails.isLoading;
 
-  const handleSaveChanges = async (values) => {
-    setError("");
-    setIsLoading(true);
-    // values ={
-    //             email: "",
-    //             password: "",
-    //           }
-
-    try {
-      const response = await axios.post("/users/login", values);
-      console.log(response);
-
-      dispatch(loginAction(response.data));
-
-      // Set user to localStorage
-      localStorage.setItem("user", JSON.stringify(response.data));
-
-      history.push("/");
-    } catch (e) {
-      console.log(e.response);
-      setError(e.response.data.message);
-    }
-    setIsLoading(false);
-
-    /* const state = useSelector((store) => store);
-   const error = state.userDetails.error;*/
-    /* const isLoading = state.userDetails.isLoading;
-  // const [error, setError] = useState();
-  // const [isLoading, setIsLoading] = useState(false);
-  const History = useHistory();
-  const dispatch = useDispatch();
-  const handleSaveChange = async (values) => {*/
-    /* setError("");
-    setIsLoading(true);
-    try {
-      const response = await axios.post("/users/login", values);
-      // setUser(response.data)
-      dispatch(loginAction(response.data));
-      localStorage.setItem("user", JSON.stringify(response.data));
-      History.push("/");
-    } catch (e) {
-      setError(e.response.data.message);
-    }
-    setIsLoading(false);*/
-    // dispatch(loginAction(values, history));
+  const handleSaveChange = async (values) => {
+    dispatch(loginAction(values, history));
   };
-  return (
-    <LoginContainer>
-      <LoginRow>
-        <FlexCol margin="44px 0 78px 0" align="flex-start" justify="start">
-          <Formik
-            initialValues={{
-              email: "",
-              password: "",
-            }}
-            validationSchema={LoginSchema()}
-            onSubmit={handleSaveChanges}
-          >
-            {({ errors, touched }) => {
-              return (
-                <Form>
-                  <FormInput
-                    type={"email"}
-                    name={"email"}
-                    palceholder={"Email"}
-                    required={true}
-                  />
-                  {errors.email && touched.email ? (
-                    <ErrorMsg>{errors.email}</ErrorMsg>
-                  ) : null}
 
-                  <FormInput
-                    type={"password"}
-                    name={"password"}
-                    palceholder={"Password"}
-                    required={true}
-                  />
-                  {errors.password && touched.password ? (
-                    <ErrorMsg>{errors.password}</ErrorMsg>
-                  ) : null}
-                  <Button text="Login" isLoading={isLoading} />
-                </Form>
-              );
-            }}
-          </Formik>
-          <Button
-            link={"/Signup"}
-            width={"100%"}
-            borderRadius={20}
-            text={"Sign up now"}
-            style={{
-              border: "3px solid #FCDD06",
-              marginTop: 40,
-              background: "#fff",
-            }}
-          />
-        </FlexCol>
-        <LoginImg src={Product} />
-      </LoginRow>
-    </LoginContainer>
+  return (
+    <InnerSection
+      style={{
+        marginTop: 44,
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
+      <FormBox>
+        <Typography
+          fontSize={60}
+          color={"#242424"}
+          fontWeight={700}
+          style={{
+            margin: "0 0 10px 0",
+            justifyContent: "start",
+          }}
+        >
+          Login.
+        </Typography>
+        <Typography
+          fontSize={28}
+          color={"#70707070"}
+          fontWeight={700}
+          style={{
+            margin: "0 0 52px 0",
+            justifyContent: "start",
+          }}
+        >
+          Login with your data that you entered during registration
+        </Typography>
+
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validationSchema={LoginSchema()}
+          onSubmit={handleSaveChange}
+        >
+          {({ errors, touched }) => {
+            return (
+              <Form
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "start",
+                  flexDirection: "column",
+                }}
+              >
+                <Input name={"email"} type={"email"} placeholder={"Email"} />
+                {errors.email && touched.email ? (
+                  <ErrorMsg>{errors.email}</ErrorMsg>
+                ) : null}
+
+                <Input
+                  name={"password"}
+                  type={"password"}
+                  placeholder={"password"}
+                />
+                {errors.password && touched.password ? (
+                  <ErrorMsg>{errors.password}</ErrorMsg>
+                ) : null}
+
+                {error ? <ErrorMsg>{error}</ErrorMsg> : null}
+
+                <Button
+                  isLoading={isLoading}
+                  width={"100%"}
+                  borderRadius={6}
+                  text={"Login"}
+                />
+              </Form>
+            );
+          }}
+        </Formik>
+        <Typography
+          fontSize={22}
+          color={"#242424"}
+          style={{
+            margin: "16px 0 22px 0",
+          }}
+        >
+          Forgot your password?
+        </Typography>
+        <GrayLine />
+        <Button
+          link={"/Signup"}
+          width={"100%"}
+          borderRadius={20}
+          text={"Sign up now"}
+          style={{
+            border: "3px solid #FCDD06",
+            marginTop: 40,
+            background: "#fff",
+          }}
+        />
+      </FormBox>
+      <StyledImage src={Product} />
+    </InnerSection>
   );
 }
 

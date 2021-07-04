@@ -40,6 +40,7 @@ export const loginAction = (values, history) => {
         payload: response.data,
         type: USER_LOGIN_SUCCESS,
       });
+      console.log(response.data);
 
       history.push("/");
     } catch (e) {

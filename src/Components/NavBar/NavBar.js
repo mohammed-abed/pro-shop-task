@@ -15,8 +15,9 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../Redux/User/userActions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Text } from "../../App.Styles";
+import { Text, Typography } from "../../App.Styles";
 import { Link } from "react-router-dom";
+import PersonIcon from "@material-ui/icons/Person";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -63,13 +64,25 @@ const NavBar = () => {
           </SearchButton>
         </NavBox>
         <NavBox>
+          <Icon to={state.userDetails.user._id ? "/profile" : "/login"}>
+            <PersonIcon style={Style} />
+            {state.userDetails.user._id ? (
+              <Typography fontSize={"13px"} color={"#fff"}>
+                Profile
+              </Typography>
+            ) : (
+              <Typography fontSize={"13px"} color={"#fff"}>
+                Login / Sign up
+              </Typography>
+            )}
+          </Icon>
           {/*<PersonIcon to={state.userDetails.user._id ? "/" : "/login" style={StyleObj} />*/}
-          <Link to={"/login"}>
+          {/* <Link to={"/login"}>
             <login />
             <Text fontSize={"13px"} color={"#fff"}>
               Login / Sign up
             </Text>
-          </Link>
+          </Link>*/}
           {/* <Icon to={"/login"}>
             <PersonIcon style={Style} />
           {state.userDetails.user._id ? (
@@ -83,7 +96,7 @@ const NavBar = () => {
           )}*/}
           {/*</Icon>*/}
           {/*<BookmarkIcon style={StyleObj} />*/}
-          <Icon to={"/product"}>
+          <Icon to={"/ProductPage"}>
             <span>0</span>
             <BookmarkIcon style={Style} />
             <Text fontSize={"13px"} color={"#fff"}>
@@ -92,7 +105,7 @@ const NavBar = () => {
           </Icon>
 
           {/*<ShoppingCartIcon style={StyleObj} />*/}
-          <Icon>
+          <Icon to={"/CartPage"}>
             <span>0</span>
             <ShoppingCartIcon style={Style} />
             <Text fontSize={"13px"} color={"#fff"}>
