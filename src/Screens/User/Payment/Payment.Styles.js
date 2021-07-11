@@ -3,7 +3,7 @@ import {
   FlexColumn,
   FlexRow,
   InnerSection,
-  Typography,
+  Typography
 } from "../../../App.Styles";
 import styled from "styled-components";
 
@@ -132,4 +132,20 @@ export const Num = styled(FlexRow)`
   background: ${(props) => (props.isGray ? "#707070" : "#FCDD06")};
   color: ${(props) => (props.isGray ? "#FFFFFF" : "#00000")};
   opacity: 1;
+`;
+
+export const ErrorMessage = styled(FlexRow)`
+  justify-content: start;
+  min-height: 60px;
+  color: red;
+  background: #e8c4c4;
+  padding: 10px 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+`;
+
+export const SuccessMessage = styled(ErrorMessage)`
+  color: green;
+  background: lightgreen;
 `;

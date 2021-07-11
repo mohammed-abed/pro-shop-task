@@ -5,6 +5,9 @@ import {
   GET_PRODUCT_BY_ID_FAILED,
   GET_PRODUCT_BY_ID_START,
   GET_PRODUCT_BY_ID_SUCCESS,
+  GET_SEARCH_RESULTS_FAILED,
+  GET_SEARCH_RESULTS_START,
+  GET_SEARCH_RESULTS_SUCCESS,
   GET_SLIDER_IMAGES_FAILED,
   GET_SLIDER_IMAGES_START,
   GET_SLIDER_IMAGES_SUCCESS,
@@ -17,6 +20,12 @@ export const guestReducers = (
     isLoading: false,
     product: {
       product: {},
+      isLoading: false,
+    },
+    searchResults: {
+      products: [],
+      page: 0,
+      pages: 0,
       isLoading: false,
     },
   },
@@ -61,6 +70,36 @@ export const guestReducers = (
         error: action.payload,
       };
 
+    case GET_SEARCH_RESULTS_START:
+      return {
+        ...initialState,
+        searchResults: {
+          ...initialState.searchResults,
+          isLoading: true,
+        },
+      };
+    case GET_SEARCH_RESULTS_SUCCESS:
+      return {
+        ...initialState,
+        searchResults: {
+          isLoading: false,
+          ...action.payload,
+          /*
+            products: action.payload.products,
+            page: action.payload.page,
+            pages: action.payload.pages
+          */
+        },
+      };
+    case GET_SEARCH_RESULTS_FAILED:
+      return {
+        ...initialState,
+        searchResults: {
+          isLoading: false,
+          error: action.payload,
+        },
+      };
+
     /** Product by id Cases*/
     case GET_PRODUCT_BY_ID_START:
       return {
@@ -85,6 +124,7 @@ export const guestReducers = (
           error: action.payload,
         },
       };
+
     default:
       return initialState;
   }

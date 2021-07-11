@@ -1,4 +1,9 @@
-import { FlexColumn, InnerSection, Typography } from "../../../App.Styles";
+import {
+  FlexColumn,
+  FlexRow,
+  InnerSection,
+  Typography,
+} from "../../../App.Styles";
 import styled from "styled-components";
 
 export const SpecificationContainer = styled(InnerSection)`
@@ -43,6 +48,7 @@ export const RIcon = styled("span")`
   display: flex;
   justify-content: center;
   align-items: center;
+
   :hover {
     border: 1px solid #fcdd06;
   }
@@ -51,4 +57,27 @@ export const FlexColWhite = styled(FlexColumn)`
   align-items: flex-start;
   border: 1px solid #bcbcbc;
   padding: 0 51px 15px 51px;
+`;
+export const CardsBox = styled(FlexRow)`
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 90vw;
+  max-width: 1800px;
+  @media screen and (max-width: 1100px) {
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const LoadMore = styled(FlexRow)`
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  background: ${(props) => (props.isLoading ? "#ddd" : "#fcdd06")};
+  color: #fff;
+  border-radius: 21px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin: 0 auto;
 `;

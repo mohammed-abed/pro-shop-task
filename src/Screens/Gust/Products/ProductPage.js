@@ -19,7 +19,6 @@ import {
   RIcon,
   SpecificationContainer,
   StyledFlexColumn,
-  Title,
 } from "./ProductPage.Styles";
 import Button from "../../../Components/Button/Button";
 import RemoveIcon from "@material-ui/icons/Remove";

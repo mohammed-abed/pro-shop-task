@@ -12,6 +12,7 @@ import UpdateProfile from "./Screens/User/UpdateProfile";
 import Profile from "./Screens/User/Profile";
 import { Fragment } from "react";
 import Payment from "./Screens/User/Payment/Payment";
+import SearchScreen from "./Screens/Gust/SearchScreen";
 
 function App() {
   // const localStr = JSON.parse(localStorage.getItem('user'))
@@ -21,6 +22,13 @@ function App() {
   return (
     <MainContainer>
       <NavBar />
+      <Route
+        key={9874}
+        path={"/search"}
+        exact={true}
+        component={SearchScreen}
+      />
+      ,
       <Switch>
         <Route path={"/profile"} exact={true} component={Profile} />
         <Route
