@@ -1,4 +1,4 @@
-import { OrderContainer } from "./Qrder.Styles";
+import { OrderContainer } from "./Order.Styles";
 import { FlexCol, FlexRow, Image, Text } from "../../App.Styles";
 import { Span } from "../ShoppingCart/ShoppingCart.Styles";
 import Button from "../Button/Button";

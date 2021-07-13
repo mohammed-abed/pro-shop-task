@@ -2,7 +2,7 @@ import Button from "../Button/Button";
 import { FlexCol, FlexRow, Image, Text } from "../../App.Styles";
 import { GrayLine } from "../../Screens/Gust/HomeScreen/HomeScreen.Styles";
 import { Span } from "../ShoppingCart/ShoppingCart.Styles";
-import { Input, OrderContainer } from "./Qrder.Styles";
+import { Input, OrderContainer } from "./Order.Styles";
 import Product from "../../Assets/Product.png";
 
 function ReviewOrder() {

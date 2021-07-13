@@ -1,4 +1,4 @@
-import { MainContainer } from "./App.Styles";
+import { MainContainer, SpinnerContainer } from "./App.Styles";
 import NavBar from "./Components/NavBar/NavBar";
 import RecentlyViewedSection from "./Screens/Gust/HomeScreen/RecentlyViewedSection";
 import Login from "./Screens/Auth/Login";
@@ -13,6 +13,13 @@ import Profile from "./Screens/User/Profile";
 import { Fragment } from "react";
 import Payment from "./Screens/User/Payment/Payment";
 import SearchScreen from "./Screens/Gust/SearchScreen";
+import { lazy } from "react";
+import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
+import { Suspense } from "react";
+import GuestRouter from "./Router/GuestRouter/GuestRouter";
+import UserRouter from "./Router/UserRouter/UserRouter";
+import AuthRouter from "./Router/AuthRouter/AuthRouter";
+import NotFoundScreen from "./Screens/Gust/NotFoundScreen/NotFoundScreen";
 
 function App() {
   // const localStr = JSON.parse(localStorage.getItem('user'))
@@ -21,75 +28,19 @@ function App() {
 
   return (
     <MainContainer>
-      <NavBar />
-      <Route
-        key={9874}
-        path={"/search"}
-        exact={true}
-        component={SearchScreen}
-      />
-      ,
-      <Switch>
-        <Route path={"/profile"} exact={true} component={Profile} />
-        <Route
-          path={"/proceed-checkout/shipping-address"}
-          exact={true}
-          component={Payment}
-        />
-        <Route
-          path={"/proceed-checkout/place-order"}
-          exact={true}
-          component={Payment}
-        />
-        <Route path={"/cart"} exact={true} component={CartPage} />
-        <Route path={"/"} exact={true} component={HomeScreen} />
-        <Route
-          path={"/update-profile"}
-          exact={true}
-          component={UpdateProfile}
-        />{" "}
-        <Route
-          path={"/product/:id/:name"}
-          exact={true}
-          component={ProductPage}
-        />
-        {state.userDetails.user._id ? (
-          <>
-            <Route path={"/cart"} exact={true} component={CartPage} />
-            <Route path={"/profile"} exact={true} component={Profile} />
-            <Route
-              path={"/proceed-checkout/shipping-address"}
-              exact={true}
-              component={Payment}
-            />
-            <Route
-              path={"/proceed-checkout/place-order"}
-              exact={true}
-              component={Payment}
-            />
-            <Route
-              path={"/update-profile"}
-              exact={true}
-              component={UpdateProfile}
-            />
-          </>
-        ) : (
-          <Fragment>
-            <Route
-              path={"/login"}
-              component={() => {
-                return <Login />;
-              }}
-            />
-            <Route
-              path={"/Signup"}
-              component={() => {
-                return <Signup />;
-              }}
-            />
-          </Fragment>
-        )}
-      </Switch>
+      <Suspense fallback={<SpinnerContainer />}>
+        <ErrorBoundary>
+          <NavBar />
+          <Switch>
+            {GuestRouter()}
+            {/** Make it protected*/}
+            {state.userDetails.user._id ? UserRouter() : AuthRouter()}
+            <Route key={60} path={"*"}>
+              <NotFoundScreen />
+            </Route>
+          </Switch>
+        </ErrorBoundary>
+      </Suspense>
     </MainContainer>
   );
 }

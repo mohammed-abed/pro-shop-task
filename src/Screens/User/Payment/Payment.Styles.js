@@ -3,7 +3,7 @@ import {
   FlexColumn,
   FlexRow,
   InnerSection,
-  Typography
+  Typography,
 } from "../../../App.Styles";
 import styled from "styled-components";
 
